@@ -85,7 +85,7 @@
                 $director = 'goncharovaoa@mail.ru';
                 break;
             default:
-                $director = 'goncharovaoa@mail.ru';
+                $director = 'xitan@rambler.ru';
                 break;
         }
 
