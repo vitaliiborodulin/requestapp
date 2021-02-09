@@ -13,7 +13,7 @@ $(function(){
         $.post(window.wp.ajax_url, data, function(res){
             if (res.success){
                 alert('Ваша заявка принята!');
-                $('#requestapp').html('<p>Заявка успешно добавлена</p><p style="color:red">Узнавайте статус заявки на специальной страничке <a href="#">Тут</a></p>');
+                $('#requestapp').html('<div class="alert alert-success" role="alert">Заявка успешно добавлена. Руководителю установки и вам направлено письмо, содержащее эту заявку, дальнейший статус заявки узнавайте на специальной страничке.</div>');
             } else {
                 alert(res.err);
             }
