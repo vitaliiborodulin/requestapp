@@ -12,7 +12,6 @@ $requestapp_all = requestapp_all();
             <td>Email</td>
             <td>Список УНУ</td>
             <td>Статус</td>
-<!--            <td>Описание</td>-->
         </tr>
         <?php foreach ($requestapp_all as $requestapp): ?>
             <tr>
@@ -22,7 +21,6 @@ $requestapp_all = requestapp_all();
                 <td><?=$requestapp['email']?></td>
                 <td><?=$requestapp['list']?></td>
                 <td><?=$requestapp['status']?></td>
-<!--                <td>--><?//=requestapp_text_limit($requestapp['text'])?><!--</td>-->
             </tr>
         <?php endforeach; ?>
     </table>

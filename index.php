@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Заявки
-Version: 0.1
+Version: 0.2
 Author: Xaaser2006
 Author URI: http://xaaser2006.ru/
 */
@@ -44,8 +44,6 @@ function requestapp_ondelete(){
 
 function requestapp_admin_menu(){
     add_menu_page('Заявки', 'Заявки', 0, 'requestapp', 'requestapp_editor', 'dashicons-welcome-write-blog', 3);
-//    add_posts_page('Заявки', 'Заявки', 8, 'requestapp', 'requestapp_editor');
-//    add_submenu_page('index.php','Заявки', 'Заявки', 8, 'requestapp', 'requestapp_editor');
 }
 
 add_action('admin_menu', 'requestapp_admin_menu');

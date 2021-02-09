@@ -69,19 +69,3 @@
         $query = $wpdb->prepare($t, $id_requestapp);
         return $wpdb->query($query);
     }
-
-    function requestapp_text_limit($text, $count = 100, $after = '...') {
-        if (mb_strlen($text) > $count){
-            $text = mb_substr($text,0,$count);
-            $res = $text . $after;
-        } else {
-            $res = $text;
-        }
-        return $res;
-    }
-
-    function getDateForDatabase(string $date): string {
-        $timestamp = strtotime($date);
-        $date_formated = date('Y-m-d H:i:s', $timestamp);
-        return $date_formated;
-    }

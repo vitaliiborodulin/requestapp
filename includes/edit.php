@@ -28,7 +28,7 @@
 
     } else {
         $requestapp = requestapp_get($id);
-//        var_dump($requestapp);
+
         $requestapp_name = $requestapp['name'];
         $requestapp_email = $requestapp['email'];
         $requestapp_list = $requestapp['list'];
