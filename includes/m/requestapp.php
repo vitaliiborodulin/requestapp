@@ -69,3 +69,33 @@
         $query = $wpdb->prepare($t, $id_requestapp);
         return $wpdb->query($query);
     }
+
+    function requestapp_mail($name, $email, $list, $status, $text){
+        $dt = date("d.m.Y H:i");
+        $headers = 'From: Pabgi <admin@pabgi.ru>' . "\r\n";
+
+        switch ($list){
+            case 'Гербарий':
+                $director = 'darktanya@mail.ru';
+                break;
+            case 'Инсектарий':
+                $director = 'rakntlj@rambler.ru';
+                break;
+            case 'Коллекция растений':
+                $director = 'goncharovaoa@mail.ru';
+                break;
+            default:
+                $director = 'goncharovaoa@mail.ru';
+                break;
+        }
+
+        $multiple_to_recipients = array(
+            $director,
+            $email
+        );
+
+        $mailBody = "Дата подачи: $dt\nИмя: $name\nEmail: $email\nУНУ: $list\nСтатус: $status\nТекст Заявки: $text";
+        if(wp_mail($multiple_to_recipients, 'УНУ', $mailBody, $headers)){
+            return true;
+        };
+    }

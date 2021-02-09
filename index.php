@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Заявки
-Version: 0.2
+Version: 0.3
 Author: Xaaser2006
 Author URI: http://xaaser2006.ru/
 */
@@ -101,7 +101,7 @@ function requestapp_ajax_handler(){
 
     $res = [
         'success' => false,
-        'err' => 'Произошла ошибка'
+        'err' => 'Произошла ошибка. Попробуйте позже или сообщите администратору сайта'
     ];
 
     $requestapp_name = $_POST['name'];
@@ -110,9 +110,11 @@ function requestapp_ajax_handler(){
     $requestapp_status = $_POST['status'];
     $requestapp_text = $_POST['text'];
 
-
-    if(requestapp_add($requestapp_name, $requestapp_email, $requestapp_list, $requestapp_status, $requestapp_text)){
-        $res['success'] = true;
+    if(requestapp_mail($requestapp_name, $requestapp_email, $requestapp_list, $requestapp_status, $requestapp_text)){
+        if(requestapp_add($requestapp_name, $requestapp_email, $requestapp_list, $requestapp_status, $requestapp_text)) {
+            $res['success'] = true;
+            $res['err'] = '';
+        }
     }
 
     echo json_encode($res);
