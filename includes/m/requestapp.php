@@ -35,8 +35,12 @@
 
         if($result === false)
             die('Ошибка БД');
+        else {
+            $last_insert_id = "SELECT LAST_INSERT_ID()";
+            $last_id = $wpdb->get_var($last_insert_id);
+        }
 
-        return true;
+        return $last_id;
     }
 
     function requestapp_edit($id_requestapp, $name, $email, $list, $status, $text){
@@ -70,7 +74,7 @@
         return $wpdb->query($query);
     }
 
-    function requestapp_mail($name, $email, $list, $status, $text){
+    function requestapp_mail($id, $name, $email, $list, $status, $text){
         $dt = date("d.m.Y H:i");
         $headers = 'From: Pabgi <admin@pabgi.ru>' . "\r\n";
 
@@ -89,12 +93,12 @@
                 break;
         }
 
-        $multiple_to_recipients = array(
+        $multiple_to_recipients = [
             $director,
             $email
-        );
+        ];
 
-        $mailBody = "Дата подачи: $dt\nИмя: $name\nEmail: $email\nУНУ: $list\nСтатус: $status\nТекст Заявки: $text";
+        $mailBody = "Дата подачи: $dt\nНомер заявки: $id\nИмя: $name\nEmail: $email\nУНУ: $list\nСтатус: $status\nТекст Заявки: $text";
         if(wp_mail($multiple_to_recipients, 'УНУ', $mailBody, $headers)){
             return true;
         };

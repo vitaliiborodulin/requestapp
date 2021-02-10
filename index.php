@@ -1,7 +1,8 @@
 <?php
 /*
 Plugin Name: Заявки
-Version: 0.3
+Version: 0.5
+Description: Плагин для создания и редактирования заявок
 Author: Xaaser2006
 Author URI: http://xaaser2006.ru/
 */
@@ -110,12 +111,16 @@ function requestapp_ajax_handler(){
     $requestapp_status = $_POST['status'];
     $requestapp_text = $_POST['text'];
 
-    if(requestapp_mail($requestapp_name, $requestapp_email, $requestapp_list, $requestapp_status, $requestapp_text)){
-        if(requestapp_add($requestapp_name, $requestapp_email, $requestapp_list, $requestapp_status, $requestapp_text)) {
+    $requestapp_id = requestapp_add($requestapp_name, $requestapp_email, $requestapp_list, $requestapp_status, $requestapp_text);
+
+    if($requestapp_id) {
+        if(requestapp_mail($requestapp_id, $requestapp_name, $requestapp_email, $requestapp_list, $requestapp_status, $requestapp_text)){
             $res['success'] = true;
             $res['err'] = '';
         }
     }
+
+
 
     echo json_encode($res);
 

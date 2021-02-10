@@ -9,8 +9,10 @@
         $requestapp_status = $_POST['requestapp_status'];
         $requestapp_text = $_POST['requestapp_text'];
 
-        if(requestapp_add($requestapp_name, $requestapp_email, $requestapp_list, $requestapp_status, $requestapp_text)){
-            die('Заявка успешно добавлена!');
+        $last_id = requestapp_add($requestapp_name, $requestapp_email, $requestapp_list, $requestapp_status, $requestapp_text);
+
+        if($last_id){
+            die("Заявка №$last_id успешно добавлена!");
         }
 
         $error = true;
