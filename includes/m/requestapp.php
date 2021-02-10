@@ -76,7 +76,7 @@
 
     function requestapp_mail($id, $name, $email, $list, $status, $text){
         $dt = date("d.m.Y H:i");
-        $headers = 'From: Pabgi <admin@pabgi.ru>' . "\r\n";
+        $headers = 'From: Pabgi <no-reply@1gb.ru>' . "\r\n";
 
         switch ($list){
             case 'Гербарий':
